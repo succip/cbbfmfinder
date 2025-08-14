@@ -14,10 +14,10 @@ type Song = {
 const columnnHelper = createColumnHelper<Song>();
 
 const columns = [
-  columnnHelper.accessor("episodeNumber", { cell: (info) => info.getValue() }),
-  columnnHelper.accessor("title", { cell: (info) => info.getValue() }),
-  columnnHelper.accessor("artist", { cell: (info) => info.getValue() }),
-  columnnHelper.accessor("episodeGuest", { cell: (info) => info.getValue() }),
+  columnnHelper.accessor("episodeNumber", { header: "Episode", cell: (info) => info.getValue() }),
+  columnnHelper.accessor("title", { header: "Title", cell: (info) => info.getValue() }),
+  columnnHelper.accessor("artist", { header: "Artist", cell: (info) => info.getValue() }),
+  columnnHelper.accessor("episodeGuest", { header: "Episode Guest", cell: (info) => info.getValue() }),
 ];
 
 function App() {
@@ -32,8 +32,11 @@ function App() {
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
+              {/* {headerGroup.headers.map((header) => (
                 <th key={header.id}>{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}</th>
+              ))} */}
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>{header.column.columnDef.header}</th>
               ))}
             </tr>
           ))}
